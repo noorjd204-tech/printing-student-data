@@ -1,0 +1,170 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            text-transform: capitalize;
+        }
+    .tbls{
+
+        display: inline-block ;
+         margin-right : 20px ;
+         vertical-align: top;
+    }
+
+    #femaleTable{
+        border-collapse: collapse;
+    }
+
+    #maleTable{
+        border-collapse: collapse;
+    }
+
+    th,td {
+
+        padding: 10px;
+  text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+
+    </style>
+<meta charset="UTF-8">
+<title> enter and print data program</title>
+</head>
+<body>
+<h3> enter data </h3>
+<label>registeration number</label>
+<input id="reg"><br><br>
+<label>name</label>
+ <input id="name"> <br><br>
+ <label>age</label>
+<input id="age" type="number"><br><br>
+<label>gender</label>
+<select id="gender">
+<option value="male">male</option>
+<option value="female">female</option>
+</select><br><br>
+<label>ethnicity</label>
+<select id="ethnecity">
+<option value="libyan">libyan</option>
+<option value="foreigner">foreigner</option>
+</select><br><br>
+<label>faculty</label>
+<select id="faculty">
+<option value="Alzawiya IT faculty">Alzawiya IT faculty</option>
+<option value="ghout alsha'al IT faculty">ghout alsha'al IT faculty</option>
+<option value="joud al-Daim IT faculty">joud al-Daim IT faculty</option>
+</select><br><br>
+
+<button onclick="addData()">add</button>
+<hr>
+<div class ="tbls">
+<h3>females table</h3>
+<table id="femaleTable" border="1">
+<tr>
+    <th>serial number </th>
+    <th>name</th>
+    <th>age</th>
+    <th>ethnicity</th>
+    <th>faculty</th>
+</tr>
+</table>
+<p id="femaleCount">total : 0</p>
+</div>
+
+ <div class ="tbls">
+<h3>males table</h3>
+<table id="maleTable" border="1">
+<tr>
+    <th>serial number </th>
+    <th>name</th>
+    <th>age</th>
+    <th>ethnicity</th>
+    <th>faculty</th>
+</tr>
+</table>
+<p id="maleCount">total : 0</p>
+</div>
+
+<p id="studentcount">total student : 0</p>
+<p id="libyancount">total libyans : 0</p>
+<p id="zawiacount">total zawia students : 0</p>
+
+<script>
+let femaleTotal = 0;
+let maleTotal = 0;
+let studenttotal = 0;
+let libyantotal = 0;
+let zawiatotal = 0;
+function addData() {
+let name = document.getElementById("name").value;
+let age = document.getElementById("age").value;
+let gender = document.getElementById("gender").value;
+let reg = document.getElementById("reg").value;
+let eth = document.getElementById("ethnecity").value;
+let fac = document.getElementById("faculty").value;
+
+if (name === "" || age === "" || reg === "" || eth === "" || fac === "" || gender === "") {
+alert ("please enter data");
+return;
+}
+if (gender === "female"){
+let table = document.getElementById("femaleTable");
+let row = table.insertRow();
+row.insertCell(0).innerHTML = reg;
+row.insertCell(1).innerHTML = name;
+row.insertCell(2).innerHTML = age;
+row.insertCell(3).innerHTML = eth;
+row.insertCell(4).innerHTML = fac;
+femaleTotal++;
+document.getElementById("femaleCount").innerHTML = "total: " +
+femaleTotal;
+studenttotal++
+document.getElementById("studentcount").innerHTML = "total students : " +
+studenttotal;
+
+} else if (gender === "male"){
+let table = document.getElementById("maleTable");
+let row = table.insertRow();
+row.insertCell(0).innerHTML = reg;
+row.insertCell(1).innerHTML = name;
+row.insertCell(2).innerHTML = age;
+row.insertCell(3).innerHTML = eth;
+row.insertCell(4).innerHTML = fac;
+maleTotal++;
+document.getElementById("maleCount").innerHTML = "total: " + maleTotal;
+studenttotal++
+document.getElementById("studentcount").innerHTML = "total students: " +
+studenttotal;
+}
+
+if (fac === "Alzawiya IT faculty"){
+
+    zawiatotal++
+document.getElementById("zawiacount").innerHTML = "total zawia students : " +
+zawiatotal;
+}
+if (eth === "libyan"){
+
+    libyantotal++
+document.getElementById("libyancount").innerHTML = "total libyan students : " +
+libyantotal;
+}
+
+
+
+document.getElementById("name").value = "";
+document.getElementById("age").value = "";
+document.getElementById("reg").value = "";
+document.getElementById("ethnecity").selectedIndex=0;
+document.getElementById("faculty").selectedIndex = 0;
+document.getElementById("gender").selectedIndex = 0;
+}
+</script>
+</body>
+</html>
